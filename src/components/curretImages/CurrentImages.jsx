@@ -1,40 +1,53 @@
-import { StyleSheet, Text, View, Image } from "react-native";
-import { FetchGet } from "../../utils/fetch";
-import { useEffect, useState } from "react";
-export const CurrentImages = () => {
-  const [data, setData] = useState("cargando..");
+import { StyleSheet, Text, View, Image, Button } from "react-native";
 
-  useEffect(async () => {
-    const dataFetch = await FetchGet();
-    setData(dataFetch);
-    console.log(data);
-  }, []);
+export const CurrentImages = ({ todayImage }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{data[0].title}</Text>
-      <Image style={styles.image} source={data[0].url} />
-      <Text style={styles.text}>{data[0].explanation}</Text>
-      <Text style={styles.text}>{data[0].date}</Text>
+      <View style={styles.imageContainer}>
+      <Image style={styles.image} source={{uri:todayImage.url}}/>   
+      </View>
+      <Text style={styles.title}>{todayImage.title}</Text>
+
+      <Text style={styles.date}>{todayImage.date}</Text>
+      <Button title="View"/>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-
-    aligneContent: "center",
-    paddingHorizontal: 50,
-    justifyContent: "center",
+    marginVertical: 16,
+    marginHorizontal: 24,
+    borderRadius:32,
+    backgroundColor:"#898d90",
+    padding:16,
+    borderRadius: 32
   },
-
+  imageContainer: {
+    aligneContent: "center",
+    justifyContent:"center",
+    borderWidth:2,
+    borderRadius: 32
+  },
   image: {
-    width: 80,
-    height: 80,
+    width: "100%",
+    height: 190,
+    borderWidth:2,
+    borderColor: "#81848c",
+    borderRadius:32
+  
+  },
+  title:{
+    fontSize:20,
+    marginVertical:12,
+    textAlign:"center",
+    fontWeight:"bold"
   },
   text: {
     color: "#141313",
     fontStyle: "italic",
     fontWeight: "500",
+    alignItems:"center",
+    fontSize:30,
   },
 });

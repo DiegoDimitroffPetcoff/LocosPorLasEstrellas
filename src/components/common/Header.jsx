@@ -14,17 +14,14 @@ export const Header = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0.3,
     flexDirection:"row",
     paddingHorizontal: 5,
-    paddingTop: 50,
+    paddingTop: 100,
     
   },
     containerLeft: {
       flex: 1,
-
-      width: "50%",
-   
+      width: "50%",   
     },
     containerRigth: {
       flex: 1,
