@@ -1,9 +1,20 @@
 import { StyleSheet, Text, View, Image } from "react-native";
+import { FetchGet } from "../../utils/fetch";
+import { useEffect, useState } from "react";
 export const CurrentImages = () => {
+  const [data, setData] = useState("cargando..");
+
+  useEffect(async () => {
+    const dataFetch = await FetchGet();
+    setData(dataFetch);
+    console.log(data);
+  }, []);
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={require("../../../assets/icon.png")} />
-      <Text style={styles.text}>DESCRIPTION</Text>
+      <Text style={styles.text}>{data[0].title}</Text>
+      <Image style={styles.image} source={data[0].url} />
+      <Text style={styles.text}>{data[0].explanation}</Text>
+      <Text style={styles.text}>{data[0].date}</Text>
     </View>
   );
 };
@@ -11,27 +22,19 @@ export const CurrentImages = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "row",
-    paddingHorizontal: 5,
+
+    aligneContent: "center",
+    paddingHorizontal: 50,
+    justifyContent: "center",
   },
-  containerLeft: {
-    flex: 1,
-    borderWidth: 3,
-    width: "50%",
-  },
-  containerRigth: {
-    flex: 1,
-    borderWidth: 3,
-    width: "50%",
-    alignItems: "flex-end",
-  },
+
   image: {
     width: 80,
     height: 80,
   },
   text: {
     color: "#141313",
-    fontSize: 30,
+    fontStyle: "italic",
     fontWeight: "500",
   },
 });
