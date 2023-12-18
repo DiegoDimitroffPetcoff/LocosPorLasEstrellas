@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Button, ScrollView } from "react-native";
 export const LastFiveDays = ({ lastImages }) => {
-  console.log(typeof lastImages);
+ 
   return (
 <ScrollView>
   <Text style={{

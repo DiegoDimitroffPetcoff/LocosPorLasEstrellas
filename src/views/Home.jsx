@@ -4,6 +4,7 @@ import { CurrentImages } from "../components/curretImages/CurrentImages";
 import { LastFiveDays } from "../components/lastFiveDays/LastFiveDays";
 import { FetchGet } from "../utils/fetch";
 import { useEffect, useState } from "react";
+import { DaysFormater } from "../utils/daysFormater";
 
 export const Home = () => {
   const [todayImage, setTodayImage] = useState([]);
@@ -21,17 +22,18 @@ export const Home = () => {
 
     const loadLastImages = async () => {
       try {
-        let template = `&start_date=2017-07-08&end_date=2017-07-10`;
+        let template = `&start_date=${DaysFormater().fiveDaysAgo}&end_date=${
+          DaysFormater().today
+        }`;
+
         const LastImagesResponse = await FetchGet(template);
         setLastImages(LastImagesResponse);
       } catch (error) {
         console.log(error);
-
       }
     };
     loadTodayImage();
     loadLastImages();
- 
   }, []);
 
   return (
