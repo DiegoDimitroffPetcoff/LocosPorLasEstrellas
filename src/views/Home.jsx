@@ -1,12 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import { Header } from "../components/common/Header";
 import { CurrentImages } from "../components/curretImages/CurrentImages";
-import { LastImages } from "../components/lastImages/LastImages";
+import { LastFiveDays } from "../components/lastFiveDays/LastFiveDays";
 import { FetchGet } from "../utils/fetch";
 import { useEffect, useState } from "react";
 
 export const Home = () => {
   const [todayImage, setTodayImage] = useState([]);
+  const [LastImages, setLastImages] = useState([]);
+
   useEffect(() => {
     const loadTodayImage = async () => {
       try {
@@ -14,23 +16,30 @@ export const Home = () => {
         setTodayImage(todayImageResponse);
       } catch (error) {
         console.log(error);
-        setTodayImage(undefined);
       }
     };
-    loadTodayImage().catch(null);
-  
+
+    const loadLastImages = async () => {
+      try {
+        let template = `&start_date=2017-07-08&end_date=2017-07-10`;
+        const LastImagesResponse = await FetchGet(template);
+        setLastImages(LastImagesResponse);
+      } catch (error) {
+        console.log(error);
+
+      }
+    };
+    loadTodayImage();
+    loadLastImages();
+ 
   }, []);
-
-
-
 
   return (
     <View style={styles.container}>
-    <Header />
-    {todayImage.length > 0 && (
-      <CurrentImages todayImage={todayImage[0]} />
-    )}
-  </View>
+      <Header />
+      <CurrentImages todayImage={todayImage} />
+      <LastFiveDays lastImages={LastImages} />
+    </View>
   );
 };
 

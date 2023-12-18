@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Image, Button } from "react-native";
 
 export const CurrentImages = ({ todayImage }) => {
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
