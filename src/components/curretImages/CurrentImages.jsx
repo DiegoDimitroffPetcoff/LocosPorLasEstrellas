@@ -1,16 +1,19 @@
 import { StyleSheet, Text, View, Image, Button } from "react-native";
-
+import { useNavigation } from "@react-navigation/native";
 export const CurrentImages = ({ todayImage }) => {
+const { navigate} =useNavigation()
+  function handleView() {
 
+    navigate("Details", {todayImage})
+  }
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
       <Image style={styles.image} source={{uri:todayImage.url}}/>   
       </View>
       <Text style={styles.title}>{todayImage.title}</Text>
-
-      <Text style={styles.date}>{todayImage.date}</Text>
-      <Button title="View"/>
+      <Text style={styles.date}>{todayImage.date}</Text>    
+      <Button title="View" onPress={handleView}/>
     </View>
   );
 };

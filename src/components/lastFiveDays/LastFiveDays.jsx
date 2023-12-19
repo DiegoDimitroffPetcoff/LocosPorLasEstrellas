@@ -1,26 +1,34 @@
 import { StyleSheet, Text, View, Button, ScrollView } from "react-native";
-export const LastFiveDays = ({ lastImages }) => {
- 
+import { useNavigation } from "@react-navigation/native";
+export const LastFiveDays = ({ todayImage }) => {
+  const { navigate } = useNavigation();
+  function handleView(todayImage) {
+
+    navigate("Details", {todayImage})
+  }
   return (
-<ScrollView>
-  <Text style={{
-    fontSize: 20,
-    marginVertical: 12,
-    textAlign: "center",
-    fontWeight: "bold",
-    color:"#81848c"
-  }}>Last 5 Days</Text>
+    <ScrollView>
+      <Text
+        style={{
+          fontSize: 20,
+          marginVertical: 12,
+          textAlign: "center",
+          fontWeight: "bold",
+          color: "#81848c",
+        }}
+      >
+        Last 5 Days
+      </Text>
 
-      {lastImages?.map((lastImages, index) => (
+      {todayImage?.map((todayImage, index) => (
         <View key={index} style={styles.container}>
-          <Text style={styles.title}>{lastImages.title}</Text>
+          <Text style={styles.title}>{todayImage.title}</Text>
 
-          <Text style={styles.date}>{lastImages.date}</Text>
-          <Button title="View" />
+          <Text style={styles.date}>{todayImage.date}</Text>
+          <Button title="View" onPress={()=>handleView(todayImage)} />
         </View>
       ))}
     </ScrollView>
-
   );
 };
 
@@ -51,7 +59,7 @@ const styles = StyleSheet.create({
     marginVertical: 12,
     textAlign: "center",
     fontWeight: "bold",
-    color:"white"
+    color: "white",
   },
   text: {
     color: "#141313",
@@ -59,9 +67,8 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     alignItems: "center",
     fontSize: 30,
-   
   },
-  date:{
-    color:"white"
-  }
+  date: {
+    color: "white",
+  },
 });

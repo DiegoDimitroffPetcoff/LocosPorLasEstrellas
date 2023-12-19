@@ -4,6 +4,7 @@ import { CurrentImages } from "../components/curretImages/CurrentImages";
 import { LastFiveDays } from "../components/lastFiveDays/LastFiveDays";
 import { FetchGet } from "../utils/fetch";
 import { useEffect, useState } from "react";
+
 import { DaysFormater } from "../utils/daysFormater";
 
 export const Home = () => {
@@ -40,7 +41,7 @@ export const Home = () => {
     <View style={styles.container}>
       <Header />
       <CurrentImages todayImage={todayImage} />
-      <LastFiveDays lastImages={LastImages} />
+      <LastFiveDays todayImage={LastImages} />
     </View>
   );
 };
@@ -48,5 +49,6 @@ export const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+     backgroundColor:"#ccd7e0",
   },
 });
