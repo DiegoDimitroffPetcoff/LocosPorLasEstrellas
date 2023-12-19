@@ -49,6 +49,6 @@ export const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-     backgroundColor:"#ccd7e0",
+    backgroundColor: "#ccd7e0",
   },
 });

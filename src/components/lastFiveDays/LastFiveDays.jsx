@@ -3,8 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 export const LastFiveDays = ({ todayImage }) => {
   const { navigate } = useNavigation();
   function handleView(todayImage) {
-
-    navigate("Details", {todayImage})
+    navigate("Details", { todayImage });
   }
   return (
     <ScrollView>
@@ -25,7 +24,7 @@ export const LastFiveDays = ({ todayImage }) => {
           <Text style={styles.title}>{todayImage.title}</Text>
 
           <Text style={styles.date}>{todayImage.date}</Text>
-          <Button title="View" onPress={()=>handleView(todayImage)} />
+          <Button title="View" onPress={() => handleView(todayImage)} />
         </View>
       ))}
     </ScrollView>

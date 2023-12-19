@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 
-export const DetailsComponent = ({todayImage}) => {
+export const DetailsComponent = ({ todayImage }) => {
   console.log(todayImage);
   return (
     <>
@@ -9,15 +9,15 @@ export const DetailsComponent = ({todayImage}) => {
       </View>
       <Text style={styles.title}>{todayImage.title}</Text>
       <Text style={styles.date}>{todayImage.date}</Text>
-      <ScrollView style={styles.explanation}><Text>{todayImage.explanation}</Text></ScrollView>
+      <ScrollView style={styles.explanation}>
+        <Text>{todayImage.explanation}</Text>
+      </ScrollView>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-   
-  },
+  container: {},
   imageContainer: {
     aligneContent: "center",
     justifyContent: "center",

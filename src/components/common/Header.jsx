@@ -6,7 +6,10 @@ export const Header = () => {
         <Text style={styles.text}>Explore</Text>
       </View>
       <View style={styles.containerRigth}>
-        <Image style={styles.icon} source={require("../../../assets/icon.png")} />
+        <Image
+          style={styles.icon}
+          source={require("../../../assets/icon.png")}
+        />
       </View>
     </View>
   );
@@ -14,29 +17,27 @@ export const Header = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection:"row",
+    flexDirection: "row",
     paddingHorizontal: 5,
     paddingTop: 30,
-    
   },
-    containerLeft: {
-      flex: 1,
-      width: "50%",   
-    },
-    containerRigth: {
-      flex: 1,
+  containerLeft: {
+    flex: 1,
+    width: "50%",
+  },
+  containerRigth: {
+    flex: 1,
 
-      width: "50%",
-      alignItems:"flex-end"
-    },
-    icon:{
-      width:80,
-      height:80,
-
-    },
-    text:{
-      color:"#141313",
-      fontSize:30,
-      fontWeight:"500"
-    }
+    width: "50%",
+    alignItems: "flex-end",
+  },
+  icon: {
+    width: 80,
+    height: 80,
+  },
+  text: {
+    color: "#141313",
+    fontSize: 30,
+    fontWeight: "500",
+  },
 });
