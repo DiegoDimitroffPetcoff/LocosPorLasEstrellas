@@ -15,3 +15,4 @@ export function Routes() {
     </NavigationContainer>
   );
 }
+/* install expo packages */
